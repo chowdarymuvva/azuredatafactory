@@ -1,0 +1,60 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "chowdaryadfsoct2026"
+		},
+		"AdventureworksLT_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"chowdary_adfs_db_free_password": {
+			"value": ""
+		},
+		"AdventureworksLT_properties_typeProperties_server": {
+			"value": "chowdaryadfsfreesqloct2026.database.windows.net"
+		},
+		"AdventureworksLT_properties_typeProperties_database": {
+			"value": "advntureworks"
+		},
+		"AdventureworksLT_properties_typeProperties_userName": {
+			"value": "serveradmin"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://chowdarystorageoct2026.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "chowdaryadfsfreesqloct2026.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "chowdary_adfs_free_sql_oct2026"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "serveradmin"
+		},
+		"chowdary_adfs_db_free_properties_typeProperties_server": {
+			"value": "chowdaryadfsfreesqloct2026.database.windows.net"
+		},
+		"chowdary_adfs_db_free_properties_typeProperties_database": {
+			"value": "chowdary_adfs_free_sql_oct2026"
+		},
+		"chowdary_adfs_db_free_properties_typeProperties_userName": {
+			"value": "serveradmin"
+		},
+		"touch_file_properties_typeProperties_scope": {
+			"value": "/subscriptions/3a000806-d086-400d-97b7-e0d80f6e195d/resourceGroups/chowdary_adfs/providers/Microsoft.Storage/storageAccounts/chowdarystorageoct2026"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

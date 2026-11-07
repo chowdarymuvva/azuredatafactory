@@ -1,0 +1,167 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "chowdaryadfsoct2026"
+		},
+		"AdventureworksLT_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AdventureworksLT'"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"AzureSqlDatabase1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
+		},
+		"chowdary_adfs_db_free_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'chowdary_adfs_db_free'"
+		},
+		"AdventureworksLT_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "chowdaryadfsfreesqloct2026.database.windows.net"
+		},
+		"AdventureworksLT_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "advntureworks"
+		},
+		"AdventureworksLT_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "serveradmin"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://chowdarystorageoct2026.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "chowdaryadfsfreesqloct2026.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "chowdary_adfs_free_sql_oct2026"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "serveradmin"
+		},
+		"chowdary_adfs_db_free_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "chowdaryadfsfreesqloct2026.database.windows.net"
+		},
+		"chowdary_adfs_db_free_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "chowdary_adfs_free_sql_oct2026"
+		},
+		"chowdary_adfs_db_free_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "serveradmin"
+		},
+		"touch_file_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/3a000806-d086-400d-97b7-e0d80f6e195d/resourceGroups/chowdary_adfs/providers/Microsoft.Storage/storageAccounts/chowdarystorageoct2026"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "chowdaryadfsoct2026_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AdventureworksLT_password": {
+						"value": "[parameters('AdventureworksLT_password')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"AzureSqlDatabase1_password": {
+						"value": "[parameters('AzureSqlDatabase1_password')]"
+					},
+					"chowdary_adfs_db_free_password": {
+						"value": "[parameters('chowdary_adfs_db_free_password')]"
+					},
+					"AdventureworksLT_properties_typeProperties_server": {
+						"value": "[parameters('AdventureworksLT_properties_typeProperties_server')]"
+					},
+					"AdventureworksLT_properties_typeProperties_database": {
+						"value": "[parameters('AdventureworksLT_properties_typeProperties_database')]"
+					},
+					"AdventureworksLT_properties_typeProperties_userName": {
+						"value": "[parameters('AdventureworksLT_properties_typeProperties_userName')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
+					},
+					"chowdary_adfs_db_free_properties_typeProperties_server": {
+						"value": "[parameters('chowdary_adfs_db_free_properties_typeProperties_server')]"
+					},
+					"chowdary_adfs_db_free_properties_typeProperties_database": {
+						"value": "[parameters('chowdary_adfs_db_free_properties_typeProperties_database')]"
+					},
+					"chowdary_adfs_db_free_properties_typeProperties_userName": {
+						"value": "[parameters('chowdary_adfs_db_free_properties_typeProperties_userName')]"
+					},
+					"touch_file_properties_typeProperties_scope": {
+						"value": "[parameters('touch_file_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "chowdaryadfsoct2026_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'chowdaryadfsoct2026_ArmTemplate_0')]"
+			]
+		}
+	]
+}

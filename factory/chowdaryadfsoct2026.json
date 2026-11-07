@@ -1,0 +1,21 @@
+{
+	"name": "chowdaryadfsoct2026",
+	"properties": {
+		"globalParameters": {
+			"email_recepient": {
+				"type": "string",
+				"value": "chowdary.muvva@live.com"
+			}
+		},
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "uaenorth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "73436bf2-2611-4e8f-89b5-78ef51261cbd",
+		"tenantId": "a5a7a7df-20aa-44ab-ba7c-90a606847aa0"
+	}
+}

@@ -1,0 +1,80 @@
+{
+	"name": "consolidated_email_demo1",
+	"properties": {
+		"activities": [
+			{
+				"name": "send email",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"url": "https://prod-22.uaenorth.logic.azure.com:443/workflows/91f5dd0af5b0469c87264381d26443f7/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=FHAILtYFMKP3uA8mN13LXRmk_Qv0xHZ0lAKXqbKwFuk",
+					"body": {
+						"value": "@concat(\n    '{',\n    '\"table_name\":\"', pipeline().parameters.table_name, '\",',\n  '\"recepient\":\"', string(pipeline().parameters.recepient),'\",',\n    '\"subject\":\"', pipeline().parameters.subject,'\",',\n    '\"body\":\"', variables('emailbody'),'\"',\n    '}'\n)\n",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "emailbody",
+					"value": {
+						"value": "@pipeline().parameters.body",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"table_name": {
+				"type": "string",
+				"defaultValue": "cutomers"
+			},
+			"recepient": {
+				"type": "string",
+				"defaultValue": "chowdary.muvva@live.com"
+			},
+			"subject": {
+				"type": "string",
+				"defaultValue": "failure"
+			},
+			"body": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"emailbody": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-10-25T16:26:28Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,25 @@
+{
+	"name": "touch_file",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "customerfileload",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/inputdata/blobs/aml_touch",
+			"blobPathEndsWith": ".txt",
+			"ignoreEmptyBlobs": false,
+			"scope": "/subscriptions/3a000806-d086-400d-97b7-e0d80f6e195d/resourceGroups/chowdary_adfs/providers/Microsoft.Storage/storageAccounts/chowdarystorageoct2026",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

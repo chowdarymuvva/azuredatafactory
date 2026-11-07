@@ -1,6 +1,5 @@
 {
 	"name": "chowdary_adfs_db_free",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "AzureSqlDatabase",
@@ -11,7 +10,15 @@
 			"trustServerCertificate": false,
 			"authenticationType": "SQL",
 			"userName": "serveradmin",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDJFQjkxOUFELThGNTgtNEE1OC04RkVFLUI1ODY1RkMxRjk4OV82MWQyMDMxNS0yMjM2LTRmZWMtYTU0ZS01ZGNhZjU5ZDQxZjAiDQp9"
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault1",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sqldbaccountpassword"
+			}
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
 }

@@ -1,0 +1,190 @@
+{
+    "properties": {
+        "provisioningState": "Succeeded",
+        "createdTime": "2026-10-18T12:08:28.2940834Z",
+        "changedTime": "2026-10-18T13:54:50.9403685Z",
+        "state": "Enabled",
+        "version": "08584092751945523075",
+        "accessEndpoint": "https://prod-22.uaenorth.logic.azure.com:443/workflows/91f5dd0af5b0469c87264381d26443f7",
+        "definition": {
+            "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+            "contentVersion": "1.0.0.0",
+            "parameters": {
+                "$connections": {
+                    "defaultValue": {},
+                    "type": "Object"
+                }
+            },
+            "triggers": {
+                "When_an_HTTP_request_is_received": {
+                    "type": "Request",
+                    "kind": "Http",
+                    "inputs": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "table_name": {
+                                    "type": "string"
+                                },
+                                "recepient": {
+                                    "type": "string"
+                                },
+                                "subject": {
+                                    "type": "string"
+                                },
+                                "body": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "actions": {
+                "Send_email_(V2)": {
+                    "runAfter": {},
+                    "type": "ApiConnection",
+                    "inputs": {
+                        "host": {
+                            "connection": {
+                                "name": "@parameters('$connections')['gmail']['connectionId']"
+                            }
+                        },
+                        "method": "post",
+                        "body": {
+                            "To": "@triggerBody()?['recepient']",
+                            "Subject": "table imported @{triggerBody()?['subject']}",
+                            "Body": "<p class=\"editor-paragraph\">@{triggerBody()?['body']}</p>"
+                        },
+                        "path": "/v2/Mail"
+                    }
+                }
+            },
+            "outputs": {}
+        },
+        "parameters": {
+            "$connections": {
+                "value": {
+                    "gmail": {
+                        "id": "/subscriptions/3a000806-d086-400d-97b7-e0d80f6e195d/providers/Microsoft.Web/locations/uaenorth/managedApis/gmail",
+                        "connectionId": "/subscriptions/3a000806-d086-400d-97b7-e0d80f6e195d/resourceGroups/chowdary_adfs/providers/Microsoft.Web/connections/gmail",
+                        "connectionName": "gmail",
+                        "connectionProperties": {}
+                    }
+                }
+            }
+        },
+        "endpointsConfiguration": {
+            "workflow": {
+                "outgoingIpAddresses": [
+                    {
+                        "address": "20.74.250.247"
+                    },
+                    {
+                        "address": "20.74.251.30"
+                    },
+                    {
+                        "address": "20.233.241.106"
+                    },
+                    {
+                        "address": "20.233.241.102"
+                    },
+                    {
+                        "address": "20.233.241.85"
+                    },
+                    {
+                        "address": "20.233.241.25"
+                    },
+                    {
+                        "address": "20.174.64.128"
+                    },
+                    {
+                        "address": "20.174.64.55"
+                    },
+                    {
+                        "address": "20.233.240.41"
+                    },
+                    {
+                        "address": "20.233.241.206"
+                    },
+                    {
+                        "address": "20.174.48.149"
+                    },
+                    {
+                        "address": "20.174.48.147"
+                    },
+                    {
+                        "address": "20.233.241.187"
+                    },
+                    {
+                        "address": "20.233.241.165"
+                    },
+                    {
+                        "address": "20.174.56.83"
+                    },
+                    {
+                        "address": "20.174.56.74"
+                    },
+                    {
+                        "address": "20.174.40.222"
+                    },
+                    {
+                        "address": "20.174.40.91"
+                    }
+                ],
+                "accessEndpointIpAddresses": [
+                    {
+                        "address": "20.233.241.162"
+                    },
+                    {
+                        "address": "20.233.241.99"
+                    },
+                    {
+                        "address": "20.174.64.131"
+                    },
+                    {
+                        "address": "20.233.241.184"
+                    },
+                    {
+                        "address": "20.174.48.155"
+                    },
+                    {
+                        "address": "20.233.241.200"
+                    },
+                    {
+                        "address": "20.174.56.89"
+                    },
+                    {
+                        "address": "20.174.41.1"
+                    }
+                ]
+            },
+            "connector": {
+                "outgoingIpAddresses": [
+                    {
+                        "address": "65.52.250.208"
+                    },
+                    {
+                        "address": "40.123.224.120"
+                    },
+                    {
+                        "address": "40.120.64.64/27"
+                    },
+                    {
+                        "address": "65.52.250.208/28"
+                    },
+                    {
+                        "address": "40.120.86.16/28"
+                    },
+                    {
+                        "address": "40.120.86.32/27"
+                    }
+                ]
+            }
+        }
+    },
+    "id": "/subscriptions/3a000806-d086-400d-97b7-e0d80f6e195d/resourceGroups/chowdary_adfs/providers/Microsoft.Logic/workflows/email_logic_app",
+    "name": "email_logic_app",
+    "type": "Microsoft.Logic/workflows",
+    "location": "uaenorth"
+}
